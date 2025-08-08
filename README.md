@@ -10,7 +10,7 @@ Este projeto contém testes automatizados de **cadastro de usuário válido e in
 ## 📁 Estrutura do Projeto
 
 ```
-qa-cypress-cucumber-test/
+cypress-cadastro-iniciando/
 ├── cypress/
 │   ├── downloads/
 │   ├── e2e/
