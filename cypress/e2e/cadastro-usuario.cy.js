@@ -1,5 +1,7 @@
 /// <reference types = "cypress" />
 
+import home_page from '../support/pages/home_page';
+
 // importando dados da fixtures
 const user_data = require('../fixtures/desafio_valid_data.json');
 const user_invalid_data = require('../fixtures/desafio_invalid_data.json');
@@ -11,7 +13,8 @@ describe('Cadastro de User', () => {
 
   beforeEach('Acessando página de cadastro', () => {
     // Acessando Tela de Cadastro de usuário
-    cy.accessRegisterPage();
+    // cy.accessRegisterPage();
+    home_page.accessRegisterPage();
   })
 
   it('Cadastro dados vazio', () => {
@@ -87,7 +90,7 @@ describe('Cadastro de User', () => {
     cy.errorMessage('O campo senha deve ter pelo menos 6 dígitos');
   });
 
-  it.only('Cadastro realizado com Sucesso', () => {
+  it('Cadastro realizado com Sucesso', () => {
     // cy.viewport(1700, 1200)
     // cy.visit('/')
     //   .get('.fa-lock')
