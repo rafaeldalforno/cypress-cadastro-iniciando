@@ -10,13 +10,8 @@ describe('Cadastro de User', () => {
   // const user_password = '123456';
 
   beforeEach('Acessando página de cadastro', () => {
-    // config de tela de teste
-    cy.viewport(1700, 1200);
-    
-    // acessando a homepage e clicando no "cadastro"
-    cy.visit('/')
-      .get('.fa-lock')
-      .click();
+    // Acessando Tela de Cadastro de usuário
+    cy.accessRegisterPage();
   })
 
   it('Cadastro dados vazio', () => {
@@ -28,9 +23,7 @@ describe('Cadastro de User', () => {
     //   .get('.fa-lock')
     //   .click();
 
-    // clicando no botão cadastrar
-    cy.get('#btnRegister')
-      .click();
+    cy.saveRegister();
 
     // verificando mensagem de erro
     cy.get('#errorMessageFirstName')
@@ -46,21 +39,11 @@ describe('Cadastro de User', () => {
     //   .get('.fa-lock')
     //   .click();
 
-    cy.get('#user')
-      .type(user_data.name);
+    cy.fillName(user_data.name);
+    cy.fillPassword(user_data.password);
+    cy.saveRegister();
 
-    cy.get('#password')
-      .type(user_data.password);
-
-    cy.get('#btnRegister')
-      .click();
-
-    cy.get('#errorMessageFirstName')
-      .should('have.text', 'O campo e-mail deve ser prenchido corretamente')
-      .then((element) => {
-        expect(element).visible
-        expect(element.text()).equals('O campo e-mail deve ser prenchido corretamente')
-      })
+    cy.errorMessage('O campo e-mail deve ser prenchido corretamente');
   });
 
   it('Cadastro campo e-mail inválido', () => {
@@ -69,20 +52,12 @@ describe('Cadastro de User', () => {
     //   .get('.fa-lock')
     //   .click();
 
-    cy.get('#user')
-      .type(user_data.name)
-    cy.get('#email')
-      .type(user_invalid_data.email)
-    cy.get('#password')
-      .type(user_data.password)
-    cy.get('#btnRegister')
-      .click()
-    
-    cy.get('#errorMessageFirstName')
-      .then((element) => {
-        expect(element).visible
-        expect(element.text()).equal('O campo e-mail deve ser prenchido corretamente')
-      })
+    cy.fillName(user_data.name);
+    cy.fillEmail(user_invalid_data.email);
+    cy.fillPassword(user_data.password);
+    cy.saveRegister();
+
+    cy.errorMessage('O campo e-mail deve ser prenchido corretamente');
   });
 
   it('Cadastro campo senha vazia', () => {
@@ -91,18 +66,11 @@ describe('Cadastro de User', () => {
     //   .get('.fa-lock')
     //   .click();
 
-    cy.get('#user')
-      .type(user_data.name);
-    cy.get('#email')
-      .type(user_data.email);
-    cy.get('#btnRegister')
-      .click();
-    
-    cy.get('#errorMessageFirstName')
-      .then((element) => {
-        expect(element).visible
-        expect(element.text()).equals('O campo senha deve ter pelo menos 6 dígitos')
-      })
+    cy.fillName(user_data.name);
+    cy.fillEmail(user_data.email);
+    cy.saveRegister();
+
+    cy.errorMessage('O campo senha deve ter pelo menos 6 dígitos');
   });
 
   it('Cadastro campo senha inválida', () => {
@@ -111,53 +79,30 @@ describe('Cadastro de User', () => {
     //   .get('.fa-lock')
     //   .click();
 
-    cy.get('#user')
-      .type(user_data.name);
-    cy.get('#email')
-      .type(user_data.email);
-    cy.get('#password')
-      .type(user_invalid_data.password);
-    cy.get('#btnRegister')
-      .click();
+    cy.fillName(user_data.name);
+    cy.fillEmail(user_data.email);
+    cy.fillPassword(user_invalid_data.password);
+    cy.saveRegister();
     
-    cy.get('#errorMessageFirstName')
-      .then((element) => {
-        expect(element).visible
-        expect(element.text()).equals('O campo senha deve ter pelo menos 6 dígitos')
-      });
+    cy.errorMessage('O campo senha deve ter pelo menos 6 dígitos');
   });
 
-  it('Cadastro realizado com Sucesso', () => {
+  it.only('Cadastro realizado com Sucesso', () => {
     // cy.viewport(1700, 1200)
     // cy.visit('/')
     //   .get('.fa-lock')
     //   .click();
 
-    cy.get('#user')
-      .type(user_data.name);
-    cy.get('#email')
-      .type(user_data.email);
-    cy.get('#password')
-      .type(user_data.password);
-    cy.get('#btnRegister')
-      .click();
+    cy.fillName(user_data.name);
+    cy.fillEmail(user_data.email);
+    cy.fillPassword(user_data.password);
+    cy.saveRegister();
     
-    cy.get('#swal2-title')
-      .then((element) => {
-        expect(element).visible
-        expect(element.text()).equal('Cadastro realizado!');
-      });
+    cy.successRegister(user_data.name);
 
-    cy.get('#swal2-html-container')
-      .then((element) => {
-        expect(element.text()).equal(`Bem-vindo ${user_data.name}`);
-      });
+    cy.confirmRegister();
 
-    cy.get('.swal2-confirm')
-      .click()
-
-    cy.get('#userLogged')
-      .should('contain', `${user_data.name}`);
+    cy.confirmLogged(user_data.name);
   });
 
 });
