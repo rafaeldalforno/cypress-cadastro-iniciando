@@ -6,12 +6,19 @@ import home_page from '../support/pages/home_page';
 const user_data = require('../fixtures/desafio_valid_data.json');
 const user_invalid_data = require('../fixtures/desafio_invalid_data.json');
 
-describe('Cadastro de User', () => {
+const screens = ['desktop', 'iphone-x', 'iphone-6']
+
+screens.forEach(element => {
+  describe('Cadastro de User', () => {
   // const user_name = 'Fulano da Silva';
   // const user_email = 'fulano.silva@test.com';
   // const user_password = '123456';
 
   beforeEach('Acessando página de cadastro', () => {
+    // config de tela de teste
+    if(element != 'desktop') {
+      cy.viewport(element);
+    }
     // Acessando Tela de Cadastro de usuário
     // cy.accessRegisterPage();
     home_page.accessRegisterPage();
@@ -108,4 +115,5 @@ describe('Cadastro de User', () => {
     cy.confirmLogged(user_data.name);
   });
 
+  });
 });
