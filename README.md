@@ -22,8 +22,12 @@ cypress-cadastro-iniciando/
 |   |   ├── desafio_valid_data.json
 |   |   └── example.json
 │   ├── support/
-|   |   ├── commands.js
-|   |   └── e2e.js
+|   |   ├── pages/
+│   │   |   ├── home_page.js
+│   │   |   └── register_page.js
+|   |   ├── e2e.js
+|   |   ├── home_page_commands.js
+|   |   └── register_page_commands.js
 │   └── ...
 ├── .gitignore
 ├── cypress.config.js

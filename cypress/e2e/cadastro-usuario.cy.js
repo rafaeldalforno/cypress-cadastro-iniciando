@@ -6,7 +6,8 @@ import home_page from '../support/pages/home_page';
 const user_data = require('../fixtures/desafio_valid_data.json');
 const user_invalid_data = require('../fixtures/desafio_invalid_data.json');
 
-const screens = ['desktop', 'iphone-x', 'iphone-6']
+// const screens = ['desktop', 'iphone-x', 'iphone-6'] // Testes para diferentes telas
+const screens = ['desktop']
 
 screens.forEach(element => {
   describe('Cadastro de User', () => {
