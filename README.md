@@ -70,4 +70,4 @@ npx cypress open
 **Rafael Dal Forno dos Santos**  
 🔗 [LinkedIn](https://www.linkedin.com/in/rafaeldalforno/)
 
-Projeto desenvolvido para fins de estudo e demonstração de automação de testes com Cypress
+Projeto desenvolvido para fins de estudo, prática e demonstração de automação de testes com Cypress
