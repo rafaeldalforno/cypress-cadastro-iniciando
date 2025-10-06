@@ -26,7 +26,7 @@ jobs:
 
       # comandos para instalar e configurar o cypress na máquina
       - name: Run Testes
-        uses: cypress-io/github-action@v5
+        uses: cypress-io/github-action@v6
         with: 
           record: true
         env: 
