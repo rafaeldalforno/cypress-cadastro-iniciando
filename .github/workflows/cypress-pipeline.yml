@@ -20,6 +20,10 @@ jobs:
         # usar uma action pré pronta do github (marketplace)
         uses: actions/checkout@v3
 
+      # exemplo de execução no terminal
+      - name: Instalar dependências do projeto
+        run: npm install
+
       # comandos para instalar e configurar o cypress na máquina
       - name: Run Testes
         uses: cypress-io/github-action@v5
