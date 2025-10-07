@@ -4,7 +4,7 @@ name: Run Basic Testes
 # em que momento será executada
 on: 
   pull_request: 
-    branches: [master]
+    branches: [main]
 
 jobs: 
   # o que vai ser feito nessa pipeline
@@ -20,9 +20,13 @@ jobs:
         # usar uma action pré pronta do github (marketplace)
         uses: actions/checkout@v3
 
+      # exemplo de execução no terminal
+      - name: Instalar dependências do projeto
+        run: npm install
+
       # comandos para instalar e configurar o cypress na máquina
       - name: Run Testes
-        uses: cypress-io/github-action@v5
+        uses: cypress-io/github-action@v6
         with: 
           record: true
         env: 
