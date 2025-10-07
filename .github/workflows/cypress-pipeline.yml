@@ -37,4 +37,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Relatório
-          path: cypress\reports\html
+          path: cypress\reports\html\screeshots
