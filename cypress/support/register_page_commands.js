@@ -10,7 +10,7 @@ const elements = {
   fields: {
     name: '#user',
     email: '#email',
-    password: '#passwordX' 
+    password: '#password' 
   },
   messages: {
     error: '#errorMessageFirstName',
