@@ -11,6 +11,10 @@ Este projeto contém testes automatizados de **cadastro de usuário válido e in
 
 ```
 cypress-cadastro-iniciando/
+├── .github/
+|   ├── workflows/
+|   |   ├── cypress-pipeline-schedule.yml
+|   |   └── cypress-pipeline.yml
 ├── cypress/
 │   ├── downloads/
 │   ├── e2e/
@@ -21,6 +25,13 @@ cypress-cadastro-iniciando/
 |   |   ├── desafio_invalid_data.json
 |   |   ├── desafio_valid_data.json
 |   |   └── example.json
+│   ├── reports/
+|   |   ├── html/
+|   |   |   ├── assets/
+|   |   |   |   └── ...
+|   |   |   ├── screenshots/
+|   |   |   ├── index.html/
+│   ├── screenshots/
 │   ├── support/
 |   |   ├── pages/
 │   │   |   ├── home_page.js
